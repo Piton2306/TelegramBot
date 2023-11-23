@@ -1,0 +1,1 @@
+C:\Users\Source\Desktop\TelegramBot\venv\Scripts\pythonw.exe C:\Users\Source\Desktop\TelegramBot\main.py
