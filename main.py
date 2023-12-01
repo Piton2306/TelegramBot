@@ -1,11 +1,13 @@
 import logging
 import time
-
+import os
 from  sql import select_last
 import telebot
 from telebot import apihelper
 import logs
 
+title = "Running telegram bot..."
+os.system(f"title {title}")
 # Logger
 
 TOKEN = '6594195662:AAF0Ssws8t0EzSvnjOpEHymHr4P0L6kgRr8'

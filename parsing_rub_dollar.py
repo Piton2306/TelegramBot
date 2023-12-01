@@ -7,7 +7,7 @@ from bs4 import BeautifulSoup
 
 import sql
 
-title = "something..."
+title = "Parsing dollar..."
 os.system(f"title {title}")
 
 url = 'https://ru.investing.com/currencies/usd-rub'
