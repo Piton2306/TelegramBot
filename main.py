@@ -4,6 +4,7 @@ import time
 from  sql import select_last
 import telebot
 from telebot import apihelper
+import logs
 
 # Logger
 
@@ -26,4 +27,9 @@ def start_message(message):
 def start_message(message):
     bot.send_message(message.chat.id, f'https://www.youtube.com/watch?v=iE5fvwLmUGw')
 
-bot.polling()
+try:
+    bot.polling()
+except:
+    logs.loging('telegram.log')
+
+

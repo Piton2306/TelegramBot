@@ -1,7 +1,7 @@
 import os
 import time
 from datetime import datetime
-
+import logs
 import requests
 from bs4 import BeautifulSoup
 
@@ -53,4 +53,5 @@ while True:
         time.sleep(2)
     except:
         print(rgb(rgb_color=red, text=str('Ошибка')))
+        logs.loging('my_log_parsing.log')
         time.sleep(2)
