@@ -1,3 +1,6 @@
 .idea
 /venv
 /file
+database_parser_dollars.db
+start_parsing_rub_dollar.bat
+start_telegram.bat
