@@ -31,7 +31,13 @@ def start_message(message):
 
 try:
     bot.polling()
+except ConnectionResetError:
+    message = 'Удаленный хост принудительно разорвал существующее подключение'
+    logs.loging('telegram.log', message)
+    bot.polling()
 except:
     logs.loging('telegram.log')
+    bot.polling()
+
 
 
