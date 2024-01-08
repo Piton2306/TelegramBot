@@ -4,7 +4,6 @@ from datetime import datetime
 import logs
 import requests
 from bs4 import BeautifulSoup
-
 import sql
 
 title = "Parsing dollar..."
@@ -37,21 +36,26 @@ old_price = 0.0
 while True:
     try:
         soup = BeautifulSoup(get_result(url), "lxml")
-        price = soup.find_all(class_="text-2xl")[2]
+        price = soup.find(class_="text-5xl/9")
         price_float = float(format(float(price.text.replace(",", ".")), '.2f'))
         if old_price < price_float:
             text_result_green = rgb(rgb_color=green, text=str(price_float))
             save_file(text=str(price_float))
             sql.insert_into_dollars(price_float, difference="↑")
             print(text_result_green)
-        if old_price > price_float:
+            old_price = price_float
+        elif old_price > price_float:
             text_result_red = rgb(rgb_color=red, text=str(price_float))
             save_file(text=str(price_float))
             sql.insert_into_dollars(price_float, difference="↓")
             print(text_result_red)
-        old_price = price_float
-        time.sleep(2)
+            old_price = price_float
+        elif old_price == price_float:
+            print(rgb(green,f"{str(datetime.now().time())[:8]} Равно {old_price} {price_float}"))
+        else:
+            print("Тест ошибки", old_price, price_float)
+        time.sleep(60)
     except:
         print(rgb(rgb_color=red, text=str('Ошибка')))
         logs.loging('my_log_parsing.log')
-        time.sleep(2)
+        time.sleep(60)

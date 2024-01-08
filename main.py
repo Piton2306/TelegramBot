@@ -29,15 +29,19 @@ def start_message(message):
 def start_message(message):
     bot.send_message(message.chat.id, f'https://www.youtube.com/watch?v=iE5fvwLmUGw')
 
-try:
-    bot.polling()
-except ConnectionResetError:
-    message = 'Удаленный хост принудительно разорвал существующее подключение'
-    logs.loging('telegram.log', message)
-    bot.polling()
-except:
-    logs.loging('telegram.log')
-    bot.polling()
+
+while True:
+    try:
+        bot.polling()
+    except ConnectionResetError:
+        time.sleep(300)
+        message = 'Удаленный хост принудительно разорвал существующее подключение'
+        logs.loging('telegram.log', message)
+    except:
+        time.sleep(300)
+        bot.polling()
+        logs.loging('telegram.log')
+
 
 
 
