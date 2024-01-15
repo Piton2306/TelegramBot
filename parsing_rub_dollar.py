@@ -59,3 +59,4 @@ while True:
         print(rgb(rgb_color=red, text=str('Ошибка')))
         logs.loging('my_log_parsing.log')
         time.sleep(60)
+        break

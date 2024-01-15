@@ -5,6 +5,7 @@ from  sql import select_last
 import telebot
 from telebot import apihelper
 import logs
+from datetime import datetime
 
 title = "Running telegram bot..."
 os.system(f"title {title}")
@@ -29,18 +30,17 @@ def start_message(message):
 def start_message(message):
     bot.send_message(message.chat.id, f'https://www.youtube.com/watch?v=iE5fvwLmUGw')
 
-
-while True:
-    try:
-        bot.polling()
-    except ConnectionResetError:
-        time.sleep(300)
-        message = 'Удаленный хост принудительно разорвал существующее подключение'
-        logs.loging('telegram.log', message)
-    except:
-        time.sleep(300)
-        bot.polling()
-        logs.loging('telegram.log')
+print(str(datetime.now().date()),str(datetime.now().time())[:8])
+try:
+    bot.polling()
+except ConnectionResetError:
+    time.sleep(20)
+    message = 'Удаленный хост принудительно разорвал существующее подключение'
+    logs.loging('telegram.log', message)
+except:
+    time.sleep(20)
+    bot.polling()
+    logs.loging('telegram.log')
 
 
 
