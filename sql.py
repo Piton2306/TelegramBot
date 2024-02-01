@@ -47,7 +47,7 @@ def insert_into_dollars(price, difference):
     connection.close()
 
 
-def select_last():
+def select_last_telegram():
     connection = sqlite3.connect(name_database)
     cursor = connection.cursor()
     date = datetime.now().date()
@@ -56,6 +56,18 @@ def select_last():
 limit 1;''')
     for i in a:
         return f'{i[2]} - - {i[1]} || {i[0]}'
+    connection.commit()
+    connection.close()
+
+def select_last_float():
+    connection = sqlite3.connect(name_database)
+    cursor = connection.cursor()
+    date = datetime.now().date()
+    time_now = str(datetime.now().time())[:8]
+    a = cursor.execute(f'''select Дата,Время,Цена_доллара from Dollars order by id desc
+limit 1;''')
+    for i in a:
+        return i[2]
     connection.commit()
     connection.close()
 

@@ -31,7 +31,7 @@ def get_result(url):
     return requests.get(url).text
 
 
-old_price = 0.0
+old_price = sql.select_last_float()
 
 while True:
     try:

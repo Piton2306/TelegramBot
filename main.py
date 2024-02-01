@@ -1,7 +1,7 @@
 import logging
 import time
 import os
-from  sql import select_last
+from  sql import select_last_telegram
 import telebot
 from telebot import apihelper
 import logs
@@ -21,7 +21,7 @@ bot = telebot.TeleBot(TOKEN)
 
 @bot.message_handler(commands=['price'])
 def start_message(message):
-    price_old = select_last()
+    price_old = select_last_telegram()
     bot.send_message(message.chat.id, f'{price_old}')
 
 
