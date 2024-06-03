@@ -1,11 +1,11 @@
-import logging
-import time
 import os
-from  sql import select_last_telegram
-import telebot
-from telebot import apihelper
-import logs
+import time
 from datetime import datetime
+
+import telebot
+
+import logs
+from sql import select_last_telegram
 
 title = "Running telegram bot..."
 os.system(f"title {title}")
@@ -25,12 +25,12 @@ def start_message(message):
     bot.send_message(message.chat.id, f'{price_old}')
 
 
-
 @bot.message_handler(commands=['help'])
 def start_message(message):
     bot.send_message(message.chat.id, f'https://www.youtube.com/watch?v=iE5fvwLmUGw')
 
-print(str(datetime.now().date()),str(datetime.now().time())[:8])
+
+print(str(datetime.now().date()), str(datetime.now().time())[:8])
 try:
     bot.polling()
 except ConnectionResetError:
@@ -41,7 +41,3 @@ except:
     time.sleep(20)
     bot.polling()
     logs.loging('telegram.log')
-
-
-
-
