@@ -1,0 +1,2 @@
+docker start d408fcdbe0c3e4dd3f39ecad5a875e3c8faf6262b3dd9873b5fbf071bd95124a
+docker exec -u root -it d408fcdbe0c3e4dd3f39ecad5a875e3c8faf6262b3dd9873b5fbf071bd95124a bash

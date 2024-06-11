@@ -17,7 +17,7 @@ dp = Dispatcher()
 
 
 # Хэндлер на команду /start
-@dp.message(Command("start"))
+@dp.message(Command("price"))
 async def cmd_start(message: types.Message):
     price_old = select_last_telegram()
     await message.answer(f'{price_old}')
