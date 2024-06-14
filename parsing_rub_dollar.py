@@ -1,10 +1,8 @@
 import os
 import time
 from datetime import datetime
-
 import requests
 from bs4 import BeautifulSoup
-
 import sql_postgress
 
 title = "Parsing dollar..."
@@ -34,7 +32,6 @@ def get_result(url):
 
 old_price = sql_postgress.select_last_float()
 while True:
-    old_price = sql_postgress.select_last_float()
     soup = BeautifulSoup(get_result(url), "lxml")
     price = soup.find(class_="text-5xl/9")
     price_float = float(format(float(price.text.replace(",", ".")), '.2f'))

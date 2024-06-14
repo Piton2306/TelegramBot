@@ -2,9 +2,12 @@ from datetime import datetime
 
 import psycopg2
 
+# host.docker.internal используя докер
+# localhost, без докера
 try:
     # пытаемся подключиться к базе данных
-    connection = psycopg2.connect(dbname='postgres', host='localhost', port='5432', user='root', password='12345')
+    connection = psycopg2.connect(dbname='postgres', host='host.docker.internal', port='5432', user='root',
+                                  password='12345')
     print("Подключение установлено")
 except:
     # в случае сбоя подключения будет выведено сообщение в STDOUT
